@@ -1,55 +1,28 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="기계설비 성능점검 셀프견적 정보 입력">
-  <title>셀프견적 | 한결기계설비</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estimate.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="기계설비 성능점검 셀프견적"><title>셀프견적 | 한결기계설비</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="estimate.css">
 </head>
 <body>
-  <header class="quote-header">
-    <div class="quote-header-inner">
-      <a class="quote-brand" href="index.html" aria-label="한결기계설비 메인으로 이동"><span>H</span><b>한결기계설비</b></a>
-      <a class="home-link" href="index.html">메인으로</a>
-    </div>
-  </header>
+  <header class="quote-header"><div class="quote-header-inner"><a class="quote-brand" href="index.html"><span>H</span><b>한결기계설비</b></a><a class="home-link" href="index.html">메인으로</a></div></header>
   <main>
-    <section class="quote-title"><p>SELF ESTIMATE</p><h1>기계설비 점검 셀프견적</h1><span>간단한 정보를 입력하면 예상 견적에 필요한 항목을 확인할 수 있습니다.</span></section>
-    <div class="stepper" aria-label="견적 진행 단계"><div class="step active"><i>1</i><span>정보 입력</span></div><div class="step-line"></div><div class="step"><i>2</i><span>설비 정보</span></div><div class="step-line"></div><div class="step"><i>3</i><span>견적 확인</span></div></div>
+    <section class="quote-title"><p>SELF ESTIMATE</p><h1>기계설비 점검 셀프견적</h1><span>건축물과 설비 정보를 차례대로 입력해 주세요.</span></section>
+    <div class="stepper" aria-label="견적 진행 단계"><div class="step active"><i>1</i><span>건물 정보</span></div><div class="step-line"></div><div class="step"><i>2</i><span>설비 정보</span></div><div class="step-line"></div><div class="step"><i>3</i><span>입력 확인</span></div></div>
     <section class="quote-card" id="step-one">
-      <div class="card-heading"><span>01</span><div><h2>정보 입력</h2><p>해당하는 항목을 선택하거나 입력해 주세요.</p></div></div>
+      <div class="card-heading"><span>01</span><div><h2>건물 정보</h2><p>점검 종류와 건축물 정보를 입력해 주세요.</p></div></div>
       <form id="basic-info-form" novalidate>
-        <fieldset>
-          <legend>점검 구분 <b>필수</b></legend><p class="field-help">필요한 점검을 모두 선택할 수 있습니다.</p>
-          <div class="choice-grid two"><label class="choice-card"><input type="checkbox" name="inspectionType" value="성능점검"><span class="check-ui"></span><strong>성능점검</strong><small>설비의 운전상태와 성능을 계측·분석합니다.</small></label><label class="choice-card"><input type="checkbox" name="inspectionType" value="유지관리점검"><span class="check-ui"></span><strong>유지관리점검</strong><small>설비 상태를 정기적으로 확인하고 기록합니다.</small></label></div>
-          <p class="error" id="inspection-error" role="alert"></p>
-        </fieldset>
-        <fieldset>
-          <legend>건축물 용도 <b>필수</b></legend><p class="field-help">둘 중 하나를 선택해 주세요.</p>
-          <div class="choice-grid two"><label class="choice-card compact"><input type="radio" name="buildingType" value="공동주택"><span class="radio-ui"></span><strong>공동주택</strong><small>아파트, 연립주택 등</small></label><label class="choice-card compact"><input type="radio" name="buildingType" value="공동주택 외"><span class="radio-ui"></span><strong>공동주택 외</strong><small>업무시설, 학교, 공장 등</small></label></div>
-          <p class="error" id="building-error" role="alert"></p>
-        </fieldset>
-        <div class="field-row conditional disabled" id="area-row"><label for="gross-area"><strong>연면적</strong><small>공동주택 외 건축물인 경우 입력</small></label><div class="input-with-unit"><input id="gross-area" name="grossArea" type="number" min="1" inputmode="decimal" placeholder="예: 15000" disabled><span>m²</span></div></div>
-        <div class="field-row conditional disabled" id="household-row"><label for="households"><strong>세대수</strong><small>공동주택인 경우 입력</small></label><div class="input-with-unit"><input id="households" name="households" type="number" min="1" inputmode="numeric" placeholder="예: 500" disabled><span>세대</span></div></div>
-        <p class="error" id="size-error" role="alert"></p>
-        <div class="field-row"><label for="approval-date"><strong>사용승인일자</strong><small>건축물대장에 표시된 날짜</small></label><input class="date-input" id="approval-date" name="approvalDate" type="date" required></div>
-        <p class="error" id="approval-error" role="alert"></p>
-        <div class="field-row"><label for="renovation-date"><strong>증축·개축·재축 및 대수선일자</strong><small>해당하는 경우에만 입력</small></label><div class="optional-date"><input class="date-input" id="renovation-date" name="renovationDate" type="date"><button type="button" id="clear-renovation">날짜 지우기</button></div></div>
-        <div class="form-actions"><a href="index.html">취소</a><button type="submit">다음 단계 <span>→</span></button></div>
+        <fieldset><legend>점검 구분 <b>필수</b></legend><p class="field-help">필요한 점검을 모두 선택할 수 있습니다.</p><div class="choice-grid two"><label class="choice-card"><input type="checkbox" name="inspectionType" value="성능점검"><span class="check-ui"></span><strong>성능점검</strong><small>설비의 운전상태와 성능을 계측·분석합니다.</small></label><label class="choice-card"><input type="checkbox" name="inspectionType" value="유지관리점검"><span class="check-ui"></span><strong>유지관리점검</strong><small>설비 상태를 정기적으로 확인하고 기록합니다.</small></label></div><p class="error" id="inspection-error" role="alert"></p></fieldset>
+        <fieldset><legend>건축물 용도 <b>필수</b></legend><p class="field-help">둘 중 하나를 선택해 주세요.</p><div class="choice-grid two"><label class="choice-card compact"><input type="radio" name="buildingType" value="공동주택"><span class="radio-ui"></span><strong>공동주택</strong><small>아파트, 연립주택 등</small></label><label class="choice-card compact"><input type="radio" name="buildingType" value="공동주택 외"><span class="radio-ui"></span><strong>공동주택 외</strong><small>업무시설, 학교, 공장 등</small></label></div><p class="error" id="building-error" role="alert"></p></fieldset>
+        <section class="building-section" id="apartment-fields" hidden><h3>공동주택 정보</h3><div class="field-row"><label for="households"><strong>세대수</strong><small>전체 점검대상 세대수</small></label><div class="input-with-unit"><input id="households" type="number" min="1" inputmode="numeric" placeholder="예: 500"><span>세대</span></div></div><div class="field-row"><label for="apartment-approval"><strong>사용승인일자</strong><small>건축물대장에 표시된 날짜</small></label><input class="date-input" id="apartment-approval" type="date"></div><div class="field-row"><label for="apartment-renovation"><strong>증축·개축·재축 및 대수선일자</strong><small>해당하는 경우만 입력</small></label><input class="date-input" id="apartment-renovation" type="date"></div></section>
+        <section class="building-section" id="other-building-fields" hidden><h3>점검대상 건물 정보</h3><div class="field-row count-row"><label for="building-count"><strong>점검대상 건물 동수</strong><small>점검하는 건물의 전체 동수</small></label><div class="input-with-unit"><input id="building-count" type="number" min="1" max="100" inputmode="numeric" value="1"><span>동</span></div></div><p class="building-count-guide" id="building-count-guide">1개 건물의 정보를 입력해 주세요.</p><div id="building-list" class="building-list"></div></section>
+        <p class="error" id="detail-error" role="alert"></p><div class="form-actions"><a href="index.html">취소</a><button type="submit">설비 정보 입력 <span>→</span></button></div>
       </form>
     </section>
-    <section class="quote-card next-card" id="step-two" hidden>
-      <div class="card-heading"><span>02</span><div><h2>설비 정보</h2><p>정보 입력이 완료되었습니다.</p></div></div>
-      <div class="saved-summary" id="saved-summary"></div>
-      <div class="next-notice"><strong>다음 항목을 입력할 준비가 되었습니다.</strong><p>설비별 수량과 종류에 따라 견적을 계산하는 항목은 다음 요청에서 이어서 구성할 수 있습니다.</p></div>
-      <div class="form-actions"><button type="button" class="back-button" id="back-to-one">← 이전 단계</button></div>
-    </section>
+    <section class="quote-card equipment-card" id="step-two" hidden><div class="card-heading"><span>02</span><div><h2>점검대상 설비</h2><p>보유한 설비의 수량을 입력해 주세요. 없는 설비는 0으로 두면 됩니다.</p></div></div><div class="equipment-tools"><button type="button" id="clear-equipment">수량 전체 초기화</button><p><b id="selected-equipment-count">0</b>개 설비 선택</p></div><form id="equipment-form"><div class="equipment-table"><div class="equipment-head"><span>점검대상 설비</span><span>수량</span><span>단위</span></div><div id="equipment-list"></div></div><p class="error" id="equipment-error" role="alert"></p><div class="form-actions"><button type="button" class="back-button" id="back-to-one">← 이전 단계</button><button type="submit">입력 내용 확인 <span>→</span></button></div></form></section>
+    <section class="quote-card summary-card" id="step-three" hidden><div class="card-heading"><span>03</span><div><h2>입력 내용 확인</h2><p>견적 계산 전 입력한 내용을 확인해 주세요.</p></div></div><div id="basic-summary" class="saved-summary"></div><h3 class="summary-title">수량을 입력한 설비</h3><div id="equipment-summary" class="equipment-summary"></div><div class="next-notice"><strong>셀프견적 기본정보 입력이 완료되었습니다.</strong><p>단가 기준을 연결하면 이 화면에서 예상 견적금액을 자동으로 계산할 수 있습니다.</p></div><div class="form-actions"><button type="button" class="back-button" id="back-to-two">← 설비 수정</button></div></section>
   </main>
-  <footer>© 2026 HANGYEOL MECHANICAL FACILITY. ALL RIGHTS RESERVED.</footer>
-  <script src="estimate.js"></script>
-</body>
-</html>
+  <footer>© 2026 HANGYEOL MECHANICAL FACILITY. ALL RIGHTS RESERVED.</footer><script src="estimate.js"></script>
+</body></html>
